@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOMRA | Employee Assessment</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand-mark">B</div><div><h1>BLOOMRA</h1><p>Employee Assessment Portal</p></div><span class="local-tag">LOCAL VERSION</span></header>
+
+    <section id="loginView" class="panel login-panel">
+      <span class="eyebrow">SECURE ACCESS</span><h2>Welcome</h2><p class="muted">Enter your employee name and department, or sign in as admin.</p>
+      <form id="loginForm">
+        <label for="username">Username</label><input id="username" autocomplete="username" placeholder="e.g. Rahul - Marketing & Sales" required>
+        <p class="hint">Employee format: <b>Your Name - Your Department</b></p>
+        <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+        <button class="primary" type="submit">Continue <span>→</span></button><p id="loginError" class="error" aria-live="polite"></p>
+      </form>
+      <div class="login-help"><b>Employee password:</b> 123<br><b>Admin username:</b> bloomara &nbsp; <b>Password:</b> 000</div>
+    </section>
+
+    <section id="examView" class="hidden">
+      <div class="exam-heading"><div><span class="eyebrow">DEPARTMENT ASSESSMENT</span><h2 id="departmentTitle"></h2><p id="employeeTitle" class="muted"></p></div><button id="logoutBtn" class="text-button" type="button">Log out</button></div>
+      <div class="progress-wrap"><div class="progress-meta"><span id="progressText">Question 1 of 10</span><span id="answeredText">0 answered</span></div><div class="progress"><div id="progressBar"></div></div></div>
+      <form id="examForm"><div id="questions"></div><div class="submit-row"><p class="muted small">Check your answers before submitting. Only one attempt is allowed for this username in this browser.</p><button class="primary" type="submit">Submit exam <span>→</span></button></div></form>
+    </section>
+
+    <section id="resultView" class="hidden">
+      <div class="result-header"><span class="eyebrow">ASSESSMENT COMPLETED</span><h2>Your result</h2><p id="resultIdentity" class="muted"></p></div>
+      <div class="score-card"><div class="score-ring" id="scoreRing"><div><strong id="percentage">0%</strong><span>Score</span></div></div><div class="score-stats"><div><strong id="correctCount">0</strong><span>Correct</span></div><div><strong id="wrongCount">0</strong><span>Wrong</span></div><div><strong id="totalCount">10</strong><span>Total</span></div></div></div>
+      <h3 class="review-title">Answer review</h3><div id="reviewList"></div><p class="lock-note">Your assessment has been saved in this browser. Contact the administrator if you need help.</p><button id="resultLogoutBtn" class="secondary" type="button">Back to login</button>
+    </section>
+
+    <section id="adminView" class="hidden">
+      <div class="admin-heading"><div><span class="eyebrow">ADMIN CONSOLE</span><h2>Employee results</h2><p class="muted">Results saved in this browser on this computer.</p></div><button id="adminLogoutBtn" class="text-button" type="button">Log out</button></div>
+      <div class="stats-grid"><div class="stat-card"><span>Total submissions</span><strong id="adminTotal">0</strong></div><div class="stat-card"><span>Average score</span><strong id="adminAverage">0%</strong></div><div class="stat-card"><span>Departments</span><strong id="adminDepartments">0</strong></div></div>
+      <div class="toolbar"><input id="resultSearch" placeholder="Search employee or department..."><button id="exportBtn" class="secondary" type="button">Export CSV</button><button id="refreshBtn" class="secondary" type="button">Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Employee</th><th>Department</th><th>Score</th><th>Percentage</th><th>Submitted</th><th>Details</th></tr></thead><tbody id="resultsBody"></tbody></table></div>
+      <p id="emptyResults" class="empty-state">No employee submissions yet.</p><div id="adminDetail" class="admin-detail hidden"></div>
+      <p class="admin-warning">Local-only notice: results are stored in this browser's local storage. They are not shared across computers or browsers. Do not clear browser data if you need to keep results.</p>
+    </section>
+    <footer>BLOOMRA · Employee Assessment Portal</footer>
+  </main>
+  <script src="data/questions.js"></script><script src="app.js"></script>
+</body></html>
